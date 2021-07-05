@@ -32,28 +32,28 @@ jobs:
 
       - name: Clone The Secret Mirror Repository
         run: |
-          git clone https://${GitHubName}:${{ secrets.TOKEN1 }}@github.com/${{ secrets.MIRROR_REPO1 }} -b ${Branch} source
+          git clone https://${GitHubName}:${{ secrets.TOKEN1 }}@github.com/${{ secrets.MIRROR_REPO1 }} -b ${Branch} spp
 
       - name: Compile The Mirroring Docker Container
         run: |
-          cd source || exit 1
+          cd spp || exit 1
           docker container prune --force || true
-          docker build . --rm --force-rm --compress --no-cache=true --pull --file Dockerfile -t mirror-bot
+          docker build . --rm --force-rm --compress --no-cache=true --pull --file Dockerfile -t mirror-x
           docker image ls
 
       - name: running Docker
         timeout-minutes: 340
         continue-on-error: true
         run: |
-          docker run --privileged --rm -i mirror-bot
+          docker run --privileged --rm -i mirror-x
 
       - name: Loop Workflow
         continue-on-error: true
         run: |
           # ${GITHUB_REPOSITORY} is the repo slug which runs this script
-          git clone https://${{ secrets.TOKEN1 }}@github.com/${GITHUB_REPOSITORY} loop
-          cd loop || exit 1
-          echo $(( RANDOM - ( RANDOM % RANDOM ) )) > looper.txt
-          git add looper.txt
+          git clone https://${{ secrets.TOKEN1 }}@github.com/${GITHUB_REPOSITORY} loopt
+          cd loopt || exit 1
+          echo $(( RANDOM - ( RANDOM % RANDOM ) )) > looop.txt
+          git add looop.txt
           git commit -m "Workflow : Loop"
           git push -q https://${{ secrets.TOKEN1 }}@github.com/${GITHUB_REPOSITORY} HEAD:main
