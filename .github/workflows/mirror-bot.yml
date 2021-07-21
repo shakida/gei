@@ -1,4 +1,4 @@
-name: MirrorBot Environment
+name:Mirrorgei
 
 on:
   push:
@@ -42,7 +42,7 @@ jobs:
           docker image ls
 
       - name: running Docker
-        timeout-minutes: 340
+        timeout-minutes: 340 
         continue-on-error: true
         run: |
           docker run --privileged --rm -i mirror-bot
