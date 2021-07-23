@@ -2,7 +2,7 @@
 # fastest microsoft server upto 3gbps
 # 6 hr uptime by GitHub
 # easy way to host mirror bots
-name: X-Pro
+name: Xmirror
 
 on:
   push:
