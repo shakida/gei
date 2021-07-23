@@ -14,7 +14,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on:ubuntu-latest
 
     steps:
       - name: Checkout
@@ -39,13 +39,13 @@ jobs:
           docker build . --rm --force-rm --compress --no-cache=true --pull --file Dockerfile -t mirror-bot
           docker image ls
 
-      - name: running Docker
-        timeout-minutes: 340 
+      - name: Running Docker
+        timeout-minutes: 330 
         continue-on-error: true
         run: |
           docker run --privileged --rm -i mirror-bot
 
-      - name: Loop Workflow
+      - name: Looping
         continue-on-error: true
         run: |
           # ${GITHUB_REPOSITORY} is the repo slug which runs this script
