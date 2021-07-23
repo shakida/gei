@@ -1,4 +1,4 @@
-name: Mirrorgei
+name: X-Pro
 
 on:
   push:
@@ -20,15 +20,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
-      - name: Set Git Configs & Secrets
+      - name: Setup ENV
         run: |
           git config --global user.email ${GitHubMail}
           git config --global user.name ${GitHubName}
           git config --global credential.helper store
           echo "https://${GitHubName}:${{ secrets.TOKEN }}@github.com" > ~/.git-credentials
-
-      # Cleanup The Actions Workspace Using Custom Composite Run Actions
-      - name: Clone The Secret Mirror Repository
+      - name: Cleanup storage
+      - uses: rokibhasansagar/slimhub_actions@main
+      - name: Cloning..
         run: |
           git clone https://${GitHubName}:${{ secrets.TOKEN }}@github.com/${{ secrets.MIRROR_REPO }} -b ${Branch} source
 
