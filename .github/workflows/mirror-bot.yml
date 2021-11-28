@@ -31,8 +31,9 @@ jobs:
           git config --global credential.helper store
           echo "https://${GitHubName}:${{ secrets.TOKEN }}@github.com" > ~/.git-credentials
       - name: Cleanup storage
-        run : wget https://raw.githubusercontent.com/Ahad1337/mirror-bot-WF/main/cleanup.sh
-        run : sudo sh cleanup.sh
+        run: |
+          git clone https://raw.githubusercontent.com/Ahad1337/mirror-bot-WF/main/cleanup.sh
+          sudo sh cleanup.sh
       - name: Cloning..
         run: |
           git clone https://${GitHubName}:${{ secrets.TOKEN }}@github.com/${{ secrets.MIRROR_REPO }} -b ${Branch} source
