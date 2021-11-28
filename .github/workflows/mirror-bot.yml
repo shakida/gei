@@ -32,7 +32,7 @@ jobs:
           echo "https://${GitHubName}:${{ secrets.TOKEN }}@github.com" > ~/.git-credentials
       - name: Cleanup storage
         run: |
-          git clone https://raw.githubusercontent.com/Ahad1337/mirror-bot-WF/main/cleanup.sh
+          wget https://raw.githubusercontent.com/Ahad1337/mirror-bot-WF/main/cleanup.sh
           sudo sh cleanup.sh
       - name: Cloning..
         run: |
