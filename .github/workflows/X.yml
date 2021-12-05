@@ -32,7 +32,6 @@ jobs:
           echo "https://${GitHubName}:${{ secrets.TOKEN }}@github.com" > ~/.git-credentials
       - name: Cleanup storage
       - uses: rokibhasansagar/slimhub_actions@main
-        run: |
       - name: Cloning..
         run: |
           git clone https://${GitHubName}:${{ secrets.TOKEN }}@github.com/${{ secrets.MIRROR_REPO }} -b ${Branch} source
