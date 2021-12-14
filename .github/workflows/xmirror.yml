@@ -33,7 +33,8 @@ jobs:
       - name: Cleanup storage
        # uses: rokibhasansagar/slimhub_actions@main
         run: |
-        curl -sL https://raw.githubusercontent.com/ahadz-git/testwf/main/cleanup -o cleanup.sh && chmod +x cleanup.sh
+        curl -sL https://raw.githubusercontent.com/ahadz-git/testwf/main/cleanup -o cleanup.sh
+        chmod +x cleanup.sh
         sudo sh cleanup.sh
       - name: Cloning..
         run: |
