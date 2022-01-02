@@ -8,3 +8,7 @@
 - in no need to clean storege remove cleaning vars
 
 Done ✅
+
+## Attention ⚠️
+``` I didn't responsible for your GitHub account.
+```
